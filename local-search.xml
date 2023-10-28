@@ -4,25 +4,27 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2023/10/19/hello-world/"/>
-    <url>/2023/10/19/hello-world/</url>
+    <title>ARTS_1</title>
+    <link href="/2023/10/28/ARTS-1/"/>
+    <url>/2023/10/28/ARTS-1/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="ARTS-1"><a href="#ARTS-1" class="headerlink" title="ARTS_1"></a>ARTS_1</h1><h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>Leetcode 9.回文数</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>  <span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span> || x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-type">int</span> rev = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (x &gt; rev) &#123;<br>            rev = rev * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;<br>            x /= <span class="hljs-number">10</span>;<br>        &#125;<br>        <span class="hljs-comment">// 处理奇数个数的数字，如果 x&lt;rev 就说明 输入的 x 是奇数位数字</span><br>        <span class="hljs-keyword">if</span> (x &lt; rev) &#123;<br>            x = x * <span class="hljs-number">10</span> + rev % <span class="hljs-number">10</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> x == rev;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p>有两种思路，第一种是将数字转换为字符串，然后一一比对，第二种思路是翻转数字的一半，比较翻转的一半和未翻转的一半是否相等，如果相等那么就是回文的。<br>使用第二种方法要注意如下几点：</p><ol><li>如果数字为0，那么是回文的。</li><li>如果数字为负数或者数字最后一位是0（因为数字的最高位不可能为0），那么不是回文的。</li><li>如果数字的个数是奇数位，那么在循环翻转完成之后，给<code>x</code>加上一个<code>rev</code>的最低位，这样就可以保证翻转后的数字和原数字的数字个数相等。</li><li>最后结果x与rev相等则是回文，否则不是。</li></ol><h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p><code>JavaScript</code>中，函数类型具有一个方法<code>toString()</code>，使用该方法可以获得函数内部的源码，包括函数内部的注释，利用这个方法，我们可以以一种不同的方式来实现多行字符串。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123; <span class="hljs-comment">/*</span><br><span class="hljs-comment">line 1</span><br><span class="hljs-comment">line 2</span><br><span class="hljs-comment">line 3</span><br><span class="hljs-comment">*/</span>&#125;).<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;\n&#x27;</span>).<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure><p>这段代码的返回值就是里面的注释，所以可以直接拿到如下结果</p><blockquote><p>line 1</p><p>line 2</p><p>line 3</p></blockquote>]]></content>
     
     
     <categories>
       
-      <category>随笔</category>
+      <category>ARTS</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>TestPage</tag>
+      <tag>ARTS</tag>
       
-      <tag>Hello</tag>
+      <tag>算法</tag>
+      
+      <tag>编程技巧</tag>
       
     </tags>
     
